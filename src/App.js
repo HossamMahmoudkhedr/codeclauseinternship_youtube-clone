@@ -1,25 +1,47 @@
-import logo from './logo.svg';
+import {
+	RouterProvider,
+	createBrowserRouter,
+	createRoutesFromElements,
+	Route,
+} from 'react-router-dom';
 import './App.css';
 
+// Components
+import Feed from './components/feed';
+import ChannelDetail from './components/channelDetail';
+import VideoDetail from './components/videoDetail';
+import SearchFeed from './components/searchFeed';
+
+// Pages
+import RootLayout from './pages/rootLayout';
+
+const router = createBrowserRouter(
+	createRoutesFromElements(
+		<Route
+			path="/"
+			element={<RootLayout />}>
+			<Route
+				index
+				element={<Feed />}
+			/>
+			<Route
+				path="video/:id"
+				element={<VideoDetail />}
+			/>
+			<Route
+				path="channel/:id"
+				element={<ChannelDetail />}
+			/>
+			<Route
+				path="search/:searchTerm"
+				element={<SearchFeed />}
+			/>
+		</Route>
+	)
+);
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return <RouterProvider router={router} />;
 }
 
 export default App;
