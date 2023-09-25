@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Stack, TextField } from '@mui/material';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import { ReactComponent as Search } from '../assets/search.svg';
 import { ReactComponent as User } from '../assets/person-circle.svg';
 import styled from 'styled-components';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Form = styled.form`
 	display: flex;
@@ -47,6 +48,16 @@ const SearchIcon = styled.div`
 	}
 `;
 const Navbar = () => {
+	const [searchTerm, setSearchTerm] = useState('');
+
+	const navigate = useNavigate();
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		if (searchTerm) {
+			navigate(`search/${searchTerm}`);
+		}
+	};
 	return (
 		<Stack
 			direction="row"
@@ -58,16 +69,25 @@ const Navbar = () => {
 			<Box
 				className="logo-container"
 				width="100px">
-				<Logo />
+				<Link to="/">
+					<Logo />
+				</Link>
 			</Box>
 			<Form
+				onSubmit={handleSubmit}
 				action=""
 				className="search-form">
 				<StyledTextField
+					onChange={(e) => {
+						setSearchTerm(e.target.value);
+					}}
 					type="text"
+					value={searchTerm}
 					placeholder="Search"
 				/>
-				<SearchIcon className="search-icon">
+				<SearchIcon
+					onClick={handleSubmit}
+					className="search-icon">
 					<Search />
 				</SearchIcon>
 			</Form>

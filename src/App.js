@@ -14,6 +14,7 @@ import SearchFeed from './components/searchFeed';
 
 // Pages
 import RootLayout from './pages/rootLayout';
+import Error from './pages/error';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -35,6 +36,10 @@ const router = createBrowserRouter(
 			<Route
 				path="search/:searchTerm"
 				element={<SearchFeed />}
+			/>
+			<Route
+				path={'*'}
+				element={<Error />}
 			/>
 		</Route>
 	)

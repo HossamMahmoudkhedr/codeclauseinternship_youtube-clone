@@ -1,5 +1,5 @@
-import { Box, Stack } from '@mui/material';
-import React, { useState } from 'react';
+import { Stack } from '@mui/material';
+import React from 'react';
 import { categories } from '../utils/constants';
 import styled from 'styled-components';
 
@@ -31,7 +31,7 @@ const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
 				margin: '2rem 0',
 				gap: '1rem',
 				padding: '0 1rem',
-				height: { xs: 'auto', md: '95%' },
+				height: { xs: 'auto', md: '100%' },
 				flexDirection: { xs: 'row', md: 'column' },
 			}}>
 			{categories.map((category) => (
