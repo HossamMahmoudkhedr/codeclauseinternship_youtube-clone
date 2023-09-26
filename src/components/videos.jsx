@@ -16,8 +16,8 @@ const StyledGridContainer = styled(Grid)`
 	}
 `;
 
-const Videos = ({ videos }) => {
-	console.log(videos);
+const Videos = ({ videos, xs, md, lg }) => {
+	if (!videos) return 'loading...';
 	return (
 		<StyledGridContainer
 			container
@@ -25,9 +25,9 @@ const Videos = ({ videos }) => {
 			{videos.map((item) => (
 				<Grid
 					item
-					xs={12}
-					md={6}
-					lg={4}>
+					xs={xs || 12}
+					md={md || 6}
+					lg={lg || 4}>
 					{(item.id.videoId || item.id.playlistId) && (
 						<VideoCard
 							video={item}

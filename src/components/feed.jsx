@@ -39,6 +39,7 @@ const Feed = () => {
 			<Box width="90%">
 				<Stack
 					direction="row"
+					marginLeft={{ xs: '2rem', md: 'unset' }}
 					spacing={1}>
 					<Typography
 						variant="h4"
